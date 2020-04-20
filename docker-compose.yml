@@ -3,7 +3,7 @@ version: "2.2"
 services:
   postgres:
     container_name: postgres
-    image: postgres:latest
+    image: postgres:12.2
     volumes:
       - ./storage/postgres:/var/lib/postgresql/data
     environment:
@@ -13,10 +13,11 @@ services:
 
   zookeeper:
     container_name: zookeeper
-    image: zookeeper:3.5
+    # must be 3.5.x
+    image: zookeeper:3.5.7
     volumes:
-    - ./storage/zk_data:/var/lib/zookeeper/data
-    - ./storage/zk_trxn:/var/lib/zookeeper/log
+    - ./storage/zk_data:/data
+    - ./storage/zk_trxn:/datalog
     environment:
       - ZOO_MY_ID=1
 
@@ -38,7 +39,7 @@ services:
       - zookeeper
 
   coordinator:
-    image: apache/druid:0.17.0
+    image: apache/druid:0.18.0
     container_name: coordinator
     volumes:
       - ./storage/druid_deep:/opt/data
@@ -53,7 +54,7 @@ services:
       - environment
 
   broker:
-    image: apache/druid:0.17.0
+    image: apache/druid:0.18.0
     container_name: broker
     volumes:
       - ./storage/broker_var:/opt/druid/var
@@ -68,7 +69,7 @@ services:
       - environment
 
   historical:
-    image: apache/druid:0.17.0
+    image: apache/druid:0.18.0
     container_name: historical
     volumes:
       - ./storage/druid_deep:/opt/data
@@ -84,7 +85,7 @@ services:
       - environment
 
   middlemanager:
-    image: apache/druid:0.17.0
+    image: apache/druid:0.18.0
     container_name: middlemanager
     volumes:
       - ./storage/druid_deep:/opt/data
@@ -100,7 +101,7 @@ services:
       - environment
 
   router:
-    image: apache/druid:0.17.0
+    image: apache/druid:0.18.0
     container_name: router
     volumes:
       - ./storage/router_var:/opt/druid/var
