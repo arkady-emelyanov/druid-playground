@@ -26,7 +26,7 @@ For Druid, Kafka service available as `kafka:9092`
 ## Sample query
 
 ```
-curl -X 'POST' -H 'Content-Type:application/json' \
+curl -s -X 'POST' -H 'Content-Type:application/json' \
     -d @sample_query.json \
-    http://localhost:8888/druid/v2/sql
+    http://localhost:8888/druid/v2/sql | jq
 ```
