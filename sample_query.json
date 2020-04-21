@@ -1,0 +1,1 @@
+{"query": "SELECT __time, ROUND(Amount / 100.0, 2), MerchantId FROM events WHERE (ClientId = 100500) AND (__time >= TIMESTAMP '2020-04-27 00:00:00' AND __time < TIMESTAMP '2020-05-15 00:00:00')"}

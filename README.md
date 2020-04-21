@@ -22,3 +22,11 @@ kafkacat -z snappy -b 127.0.0.1:9093 -t events -P -l ./generated/events.json
 http://localhost:8888/unified-console.html#load-data
 
 For Druid, Kafka service available as `kafka:9092`
+
+## Sample query
+
+```
+curl -X 'POST' -H 'Content-Type:application/json' \
+    -d @sample_query.json \
+    http://localhost:8888/druid/v2/sql
+```
