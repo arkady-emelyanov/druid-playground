@@ -20,3 +20,5 @@ kafkacat -z snappy -b 127.0.0.1:9093 -t events -P -l ./generated/events.json
 ## Setup ingestion
 
 http://localhost:8888/unified-console.html#load-data
+
+For Druid, Kafka service available as `kafka:9092`
